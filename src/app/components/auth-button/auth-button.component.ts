@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-auth-button',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth-button.component.css']
 })
 export class AuthButtonComponent {
+  @Input()title!: string;
+  @Input() backgroundColor!: string;
+  @Input() textColor!: string;
 
 }
