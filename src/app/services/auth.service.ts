@@ -12,6 +12,6 @@ export class AuthService {
   login(username: string, password: string){
     const URL = `${this.url}/login`;
     const body = {username, password};
-    return this.http.post(URL, body);
+    return this.http.post<any>(URL, body);
   }
 }
