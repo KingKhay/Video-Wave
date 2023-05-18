@@ -1,16 +1,32 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './components/header/header.component';
+import {LoginComponent} from './pages/login/login.component';
+import {InputComponent} from './components/input/input.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CheckboxComponent} from './components/checkbox/checkbox.component';
+import {AuthButtonComponent} from './components/auth-button/auth-button.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    LoginComponent,
+    InputComponent,
+    CheckboxComponent,
+    AuthButtonComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

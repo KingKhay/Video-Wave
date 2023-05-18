@@ -3,13 +3,22 @@
     <div class="absolute top-10 left-10">
       <p class="font-bold text-3xl">Video Wave🎞</p>
     </div>
-    <div>
-      <h1>Welcome Back!</h1>
-      <p>The faster you fill up, the faster you get a ticket</p>
+    <div class="pb-5">
+      <h1 class="text-center text-2xl leading-loose">Welcome Back!</h1>
+      <p class="text-sm">The faster you fill up, the faster you get a ticket</p>
     </div>
     <div>
-      Form will be here
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <app-input [placeholder]="'Enter your username'" [label]="'Email'" formControlName="username"></app-input>
+        <app-input [placeholder]="'Enter your password'" [label]="'Password'" formControlName="password"></app-input> 
+        <div class="flex items-center justify-center gap-x-10">
+          <app-checkbox [title]="'Remember Me'"></app-checkbox>
+          <a href="#" class="text-sm">Forgot Password</a>
+        </div>
+        <button type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer" [disabled]="loginForm.invalid">Login</button>
+      </form>
     </div>
+    <span class="md:py-10 text-sm">Don't have an account yet?   <a href="#">Sign Up</a></span>
   </div>
   <div class="bg-image basis-2/4"></div>
 </div>
