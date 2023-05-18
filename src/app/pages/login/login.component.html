@@ -9,13 +9,22 @@
     </div>
     <div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <app-input [placeholder]="'Enter your username'" [label]="'Email'" formControlName="username"></app-input>
-        <app-input [placeholder]="'Enter your password'" [label]="'Password'" formControlName="password"></app-input> 
+        <app-input [type]="'text'" [placeholder]="'Enter your username'" [label]="'Username'" [control]="loginForm.controls.username"></app-input>
+        <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.invalid">
+          <p class="text-left text-red-600 text-xs">Please enter a valid username</p>
+        </div>
+        <app-input [type]="'password'" [placeholder]="'Enter your password'" [label]="'Password'" [control]="loginForm.controls.password"></app-input>
+        <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+          <p class="text-left text-red-600 text-xs">Password must be at least 8 characters</p>
+        </div>
         <div class="flex items-center justify-center gap-x-10">
           <app-checkbox [title]="'Remember Me'"></app-checkbox>
           <a href="#" class="text-sm">Forgot Password</a>
         </div>
-        <button type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer" [disabled]="loginForm.invalid">Login</button>
+        <button *ngIf="!isloading" type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer">Login</button>
+        <div *ngIf="isloading" class="w-full h-1/5 flex items-center justify-center">
+          <img src="assets/images/Rollingx.png" alt="loading" class="w-2/5">
+        </div>
       </form>
     </div>
     <span class="md:py-10 text-sm">Don't have an account yet?   <a href="#">Sign Up</a></span>
