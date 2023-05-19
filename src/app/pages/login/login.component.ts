@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import Swal from "sweetalert2";
+import {toastAlert} from "../../helpers/alert";
 
 @Component({
   selector: 'app-login',
@@ -20,10 +22,11 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
+
+
   ngOnInit(): void {
 
   }
-
 
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -37,11 +40,13 @@ export class LoginComponent implements OnInit {
       // Call the login service
       this.authService.login(username!,password!).subscribe({
         next: response => {
+          console.log(response)
           localStorage.setItem("token", response.jwt);
+          toastAlert('success', 'login successful')
           this.isloading = false;
         },
         error: error => {
-          console.log('login failed', error);
+          toastAlert('error', 'login failed')
           this.isloading = false;
         }
       });
