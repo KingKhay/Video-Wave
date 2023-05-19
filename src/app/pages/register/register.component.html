@@ -1,1 +1,27 @@
-<p>register works!</p>
+<div class="flex items-center justify-center relative orbitron">
+  <div class="flex flex-col items-center justify-center basis-2/4">
+    <app-logo></app-logo>
+    <div class="pb-5">
+      <h1 class="text-center text-2xl leading-loose">Register Today</h1>
+      <p class="text-sm text-center">Stream, Upload and Download Videos Today</p>
+    </div>
+    <div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <app-input [type]="'text'" [placeholder]="'Enter your username'" [label]="'Username'" [control]="registerForm.controls.username"></app-input>
+        <div *ngIf="isloading">
+          <p class="text-left text-red-600 text-xs">Please enter a valid username</p>
+        </div>
+        <app-input [type]="'password'" [placeholder]="'Enter your password'" [label]="'Password'" [control]="registerForm.controls.password"></app-input>
+        <div *ngIf=isloading>
+          <p class="text-left text-red-600 text-xs">Password must be at least 8 characters</p>
+        </div>
+        <button *ngIf="!isloading" type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer">Register</button>
+        <div *ngIf="isloading" class="w-full h-1/5 flex items-center justify-center">
+          <img src="assets/images/Rollingx.png" alt="loading" class="w-2/5">
+        </div>
+      </form>
+    </div>
+    <span class="md:py-10 text-sm">Already have an account?   <a href="#">Sign In</a></span>
+  </div>
+  <div class="bg-image basis-2/4"></div>
+</div>
