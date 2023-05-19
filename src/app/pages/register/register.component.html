@@ -7,17 +7,44 @@
     </div>
     <div>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <app-input [type]="'text'" [placeholder]="'Enter your username'" [label]="'Username'" [control]="registerForm.controls.username"></app-input>
-        <div *ngIf="isloading">
-          <p class="text-left text-red-600 text-xs">Please enter a valid username</p>
-        </div>
-        <app-input [type]="'password'" [placeholder]="'Enter your password'" [label]="'Password'" [control]="registerForm.controls.password"></app-input>
-        <div *ngIf=isloading>
-          <p class="text-left text-red-600 text-xs">Password must be at least 8 characters</p>
-        </div>
-        <button *ngIf="!isloading" type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer">Register</button>
-        <div *ngIf="isloading" class="w-full h-1/5 flex items-center justify-center">
-          <img src="assets/images/Rollingx.png" alt="loading" class="w-2/5">
+        <div class="flex flex-col items-center justify-center">
+
+          <div class="flex items-center justify-center gap-x-4">
+            <app-input [type]="'text'" [placeholder]="'Enter your username'" [label]="'Username'" [control]="registerForm.controls.username"></app-input>
+            <div *ngIf="isloading">
+              <p class="text-left text-red-600 text-xs">Please enter a valid username</p>
+            </div>
+            <app-input [type]="'password'" [placeholder]="'Enter your password'" [label]="'Password'" [control]="registerForm.controls.password"></app-input>
+            <div *ngIf=isloading>
+              <p class="text-left text-red-600 text-xs">Password must be at least 8 characters</p>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-x-4">
+            <app-input [type]="'text'" [placeholder]="'Enter your first name'" [label]="'Firstname'" [control]="registerForm.controls.firstname"></app-input>
+            <div *ngIf=isloading>
+              <p class="text-left text-red-600 text-xs">First Name is Required</p>
+            </div>
+            <app-input [type]="'text'" [placeholder]="'Enter your last name'" [label]="'Lastname'" [control]="registerForm.controls.lastname"></app-input>
+            <div *ngIf=isloading>
+              <p class="text-left text-red-600 text-xs">Please Enter a Valid Email</p>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-x-4 w-full">
+            <div class="basis-2/4 items-start">
+              <app-input [type]="'email'" [placeholder]="'Enter your email'" [label]="'Email'" [control]="registerForm.controls.email"></app-input>
+              <div *ngIf=isloading>
+                <p class="text-left text-red-600 text-xs">Please Enter a Valid Email</p>
+              </div>
+            </div>
+            <div class="basis-2/4"></div>
+          </div>
+
+          <button *ngIf="!isloading" type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer">Register</button>
+          <div *ngIf="isloading" class="w-full h-1/5 flex items-center justify-center">
+            <img src="assets/images/Rollingx.png" alt="loading" class="w-2/5">
+          </div>
         </div>
       </form>
     </div>

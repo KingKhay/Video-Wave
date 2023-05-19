@@ -12,6 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { RegisterComponent } from './pages/register/register.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LogoComponent } from './components/logo/logo.component';
     ReactiveFormsModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
