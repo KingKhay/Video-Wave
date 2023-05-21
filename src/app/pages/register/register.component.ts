@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 import {toastAlert} from "../../helpers/alert";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../helpers/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -14,44 +15,48 @@ export class RegisterComponent {
   isloading: boolean = false;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 
   registerForm = this.fb.group({
     username: ['', Validators.required],
-    password: ['', Validators.required, Validators.minLength(8)],
+    password: ['', Validators.required],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    email: ['', Validators.required, Validators.email],
-    dob: ['', Validators.required]
+    email: ['', Validators.required],
+    dob: ['',]
   })
 
-  onSubmit() {
+  onRegister() {
+    console.log('button clicked')
     if (this.registerForm.invalid) {
+      console.log('invalid form')
       this.registerForm.markAllAsTouched();
     }
     else{
+      console.log('valid form')
       this.isloading = true;
-      let username = this.registerForm.value.username;
-      let password = this.registerForm.value.password;
       let user: User = {
         username: this.registerForm.value.username!,
         password: this.registerForm.value.password!,
         firstName: this.registerForm.value.firstname!,
         lastName: this.registerForm.value.lastname!,
         email: this.registerForm.value.email!,
-        dob: this.registerForm.value.dob!,
+        dob: "1998-01-01",
       }
+      console.log(user)
 
-      // Call the login service
       this.authService.register(user).subscribe({
         next: response => {
           console.log(response)
-          // localStorage.setItem("token", response.jwt);
           toastAlert('success', 'Registered successfully')
           this.isloading = false;
+          this.router.navigateByUrl('/login').then(r => console.log(r));
+
         },
         error: error => {
+          console.log(error)
           toastAlert('error', 'Registration failed')
           this.isloading = false;
         }
