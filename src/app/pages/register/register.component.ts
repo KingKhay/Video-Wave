@@ -20,12 +20,12 @@ export class RegisterComponent {
   }
 
   registerForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)],
-    firstname: ['', Validators.required],
-    lastname: ['', Validators.required],
-    email: ['', Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)],
-    dob: ['', Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)]
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)]],
+    firstname: ['', [Validators.required]],
+    lastname: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+    dob: ['', [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)]]
   })
 
   onRegister() {
@@ -56,8 +56,8 @@ export class RegisterComponent {
 
         },
         error: error => {
-          console.log(error)
-          toastAlert('error', 'Registration failed')
+          console.log(error.status)
+          toastAlert('error', error.error.message || "Server Could Not Respond")
           this.isloading = false;
         }
       });
