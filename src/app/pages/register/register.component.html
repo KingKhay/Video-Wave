@@ -2,51 +2,51 @@
   <div class="flex flex-col items-center justify-center basis-2/4">
     <app-logo></app-logo>
     <div class="pb-5">
-      <h1 class="text-center text-2xl leading-loose">Register Today</h1>
+      <h1 class="text-center text-2xl leading-loose pt-10">Register Today</h1>
       <p class="text-sm text-center">Stream, Upload and Download Videos Today</p>
     </div>
     <div>
       <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-        <div class="flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-center gap-y-5">
 
           <div class="items-start w-full">
             <app-input [type]="'text'" [placeholder]="'Enter your username'" [label]="'Username'" [control]="registerForm.controls.username"></app-input>
             <div *ngIf="registerForm.controls.username.touched && registerForm.controls.username.invalid">
-              <p class="text-left text-red-600 text-xs">Please enter a Username</p>
+              <span class="text-left text-red-600 text-xs">Please enter a Username</span>
             </div>
           </div>
 
           <div class="flex items-center justify-center gap-x-4">
-            <app-input [type]="'text'" [placeholder]="'Enter your first name'" [label]="'Firstname'" [control]="registerForm.controls.firstname"></app-input>
-            <div *ngIf="registerForm.controls.firstname.touched && registerForm.controls.firstname.invalid">
-              <p class="text-left text-red-600 text-xs">First Name is Required</p>
+            <div>
+              <app-input [type]="'text'" [placeholder]="'Enter your first name'" [label]="'Firstname'" [control]="registerForm.controls.firstname"></app-input>
+              <span *ngIf="registerForm.controls.firstname.touched && registerForm.controls.firstname.invalid" class="text-left text-red-600 text-xs">First Name is Required</span>
             </div>
-            <app-input [type]="'text'" [placeholder]="'Enter your last name'" [label]="'Lastname'" [control]="registerForm.controls.lastname"></app-input>
-            <div *ngIf="registerForm.controls.lastname.touched && registerForm.controls.lastname.invalid">
-              <p class="text-left text-red-600 text-xs">Please Enter a Valid Email</p>
+            <div>
+              <app-input [type]="'text'" [placeholder]="'Enter your last name'" [label]="'Lastname'" [control]="registerForm.controls.lastname"></app-input>
+              <span *ngIf="registerForm.controls.lastname.touched && registerForm.controls.lastname.invalid" class="text-left text-red-600 text-xs">Please Enter a Valid Email</span>
             </div>
           </div>
 
             <div class="items-start w-full">
               <app-input [type]="'email'" [placeholder]="'Enter your email'" [label]="'Email'" [control]="registerForm.controls.email"></app-input>
               <div *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
-                <p class="text-left text-red-600 text-xs">Please Enter a Valid Email</p>
+                <span class="text-left text-red-600 text-xs">Please Enter a Valid Email</span>
               </div>
             </div>
 
           <div class="items-start w-full">
             <app-input [type]="'password'" [placeholder]="'Enter your password'" [label]="'Password'" [control]="registerForm.controls.password"></app-input>
             <div *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
-              <p class="text-left text-red-600 text-xs">Password must be at least 8 characters</p>
+              <span class="text-left text-red-600 text-xs">Password must be at least 8 characters</span>
             </div>
           </div>
 
-          <mat-form-field>
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          <div class="items-start w-full">
+            <app-input [type]="'text'" [placeholder]="'Enter in Format YYYY-MM-dd'" [label]="'Date of Birth'" [control]="registerForm.controls.dob"></app-input>
+            <div *ngIf="registerForm.controls.password.touched && registerForm.controls.dob.invalid">
+              <p class="text-left text-red-600 text-xs">Enter a date of birth</p>
+            </div>
+          </div>
 
           <button *ngIf="!isloading" type="submit" class="py-2 px-10 md:mt-5 bg-black text-white w-full cursor-pointer">Register</button>
           <div *ngIf="isloading" class="w-full h-1/5 flex items-center justify-center">
