@@ -37,14 +37,14 @@
           <div class="items-start w-full">
             <app-input [type]="'password'" [placeholder]="'Enter your password'" [label]="'Password'" [control]="registerForm.controls.password"></app-input>
             <div *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
-              <span class="text-left text-red-600 text-xs">Password must be at least 8 characters</span>
+              <span class="text-left text-red-600 text-xs">Password must contain at least one capital letter, one digit, one special and min of 8 characters</span>
             </div>
           </div>
 
           <div class="items-start w-full">
             <app-input [type]="'text'" [placeholder]="'Enter in Format YYYY-MM-dd'" [label]="'Date of Birth'" [control]="registerForm.controls.dob"></app-input>
-            <div *ngIf="registerForm.controls.password.touched && registerForm.controls.dob.invalid">
-              <p class="text-left text-red-600 text-xs">Enter a date of birth</p>
+            <div *ngIf="registerForm.controls.dob.touched && registerForm.controls.dob.invalid">
+              <p class="text-left text-red-600 text-xs">Enter a date of birth in the format YYYY-MM-dd</p>
             </div>
           </div>
 

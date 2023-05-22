@@ -21,11 +21,11 @@ export class RegisterComponent {
 
   registerForm = this.fb.group({
     username: ['', Validators.required],
-    password: ['', Validators.required],
+    password: ['', Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    email: ['', Validators.required],
-    dob: ['',]
+    email: ['', Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)],
+    dob: ['', Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)]
   })
 
   onRegister() {
@@ -43,7 +43,7 @@ export class RegisterComponent {
         firstName: this.registerForm.value.firstname!,
         lastName: this.registerForm.value.lastname!,
         email: this.registerForm.value.email!,
-        dob: "1998-01-01",
+        dob: this.registerForm.value.dob!,
       }
       console.log(user)
 
