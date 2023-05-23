@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       let username = this.loginForm.value.username;
       let password = this.loginForm.value.password;
 
-      // Call the login service
+
       this.authService.login(username!,password!).subscribe({
         next: response => {
           console.log(response)
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         },
         error: error => {
           console.log(error)
-          toastAlert('error', 'login failed')
+          toastAlert('error', error.error.message || "Server Could Not Respond")
           this.isloading = false;
           this.loginForm.reset();
         }

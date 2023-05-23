@@ -10,9 +10,12 @@ import {CheckboxComponent} from './components/checkbox/checkbox.component';
 import {AuthButtonComponent} from './components/auth-button/auth-button.component';
 import {HttpClientModule} from "@angular/common/http";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
-import { RegisterComponent } from './pages/register/register.component';
-import { LogoComponent } from './components/logo/logo.component';
-import { AppRoutingModule } from './app-routing.module';
+import {RegisterComponent} from './pages/register/register.component';
+import {LogoComponent} from './components/logo/logo.component';
+import {AppRoutingModule} from './app-routing.module';
+import {HomeComponent} from './pages/home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NbCardModule, NbDatepickerModule, NbThemeModule} from "@nebular/theme";
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     AuthButtonComponent,
     RegisterComponent,
     LogoComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     SweetAlert2Module.forRoot(),
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
