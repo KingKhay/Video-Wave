@@ -16,6 +16,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './pages/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NbCardModule, NbDatepickerModule, NbThemeModule} from "@nebular/theme";
+import { VideoComponent } from './components/video/video.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {NbCardModule, NbDatepickerModule, NbThemeModule} from "@nebular/theme";
     RegisterComponent,
     LogoComponent,
     HomeComponent,
+    VideoComponent,
   ],
   imports: [
     BrowserModule,
